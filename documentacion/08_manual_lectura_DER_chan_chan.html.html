@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Lectura narrativa del DER: jornada en Nerdo</title>
+  <style>
+    /* Reset some default styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f9f9fb;
+      color: #333333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      color: #305675;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      border-bottom: 2px solid #e0e7ef;
+      padding-bottom: 4px;
+      font-size: 1.4em;
+    }
+    h3 {
+      margin-top: 1.2em;
+      margin-bottom: 0.3em;
+      color: #333;
+      font-size: 1.2em;
+    }
+    p {
+      margin: 0.5em 0;
+    }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      font-size: 0.95em;
+    }
+    .value {
+      font-style: italic;
+      color: #0066aa;
+    }
+    .block {
+      border-left: 5px solid;
+      background-color: #f7f7f9;
+      padding: 12px 16px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .registro {
+      border-color: #009688;
+    }
+    .cuidado {
+      border-color: #d9534f;
+      background-color: #fff5f3;
+    }
+    .ejemplo {
+      border-color: #0275d8;
+      background-color: #eef7fd;
+    }
+    .block-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+    }
+    .block-title span.icon {
+      font-size: 1.2em;
+      margin-right: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.95em;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+      color: #333333;
+    }
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lectura narrativa del DER: jornada en <span class="value">Nerdo</span></h1>
+    
+    <h2>Mini guía de lectura tipográfica</h2>
+    <p>Antes de empezar, conviene aclarar cómo leer este documento:</p>
+    <ul>
+      <li>Los nombres que pertenecen al diagrama entidad‑relación (tablas, atributos y relaciones) se muestran con <code>tipografía de código</code>. Ejemplo: <code>ventas</code>, <code>detalle_ventas</code>, <code>id_venta</code>, <code>se detalla en</code>.</li>
+      <li>Los valores que se cargan dentro de esas tablas se muestran en <span class="value">cursiva</span>. Ejemplo: <span class="value">Nerdo</span>, <span class="value">MercadoPago</span>, <span class="value">Sticker</span>, <span class="value">Britney</span>, <span class="value">venta</span>, <span class="value">reposición</span>.</li>
+      <li>Se utilizan bloques visuales para separar momentos prácticos de carga:</li>
+    </ul>
+    <div class="block registro">
+      <div class="block-title"><span class="icon">🧾</span>Registro que hago</div>
+      <p>Muestra qué registro corresponde hacer en una tabla.</p>
+    </div>
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>Indica errores manuales posibles que pueden dejar mal la base.</p>
+    </div>
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Presenta pequeñas tablas de ejemplo con filas representativas.</p>
+    </div>
+
+    <h2>1.&nbsp;Antes de vender: no puedo anotar “productos” de cualquier manera</h2>
+    <p>Estoy en <span class="value">Nerdo</span>. Todavía no empecé a vender, pero ya tengo la mesa armada. Veo <span class="value">stickers</span>, <span class="value">tazas</span>, <span class="value">pines</span>, <span class="value">postales</span> y <span class="value">cuadros</span>. También observo que esos soportes tienen diseños distintos: <span class="value">Britney</span>, <span class="value">Sailor Moon</span>, <span class="value">Chihiro</span>, <span class="value">Frida</span>, <span class="value">Titanic</span>, <span class="value">Venus</span>, <span class="value">Miley</span> y <span class="value">Freddie M</span>.</p>
+    <p>Si llevara todo en un cuaderno desordenado, podría escribir algo como “vendí una taza de <span class="value">Britney</span>” o “vendí un sticker de <span class="value">Chihiro</span>”. Eso puede parecer suficiente en el momento, pero después se vuelve un problema. Si anoto todo junto en una sola frase, después no puedo separar bien tres preguntas distintas:</p>
+    <ol>
+      <li>Qué soporte vendí más: <span class="value">Sticker</span>, <span class="value">Taza</span>, <span class="value">Pin</span>, <span class="value">Postal</span> o <span class="value">Cuadro</span>.</li>
+      <li>Qué diseño vendí más: <span class="value">Britney</span>, <span class="value">Chihiro</span>, <span class="value">Frida</span>, etc.</li>
+      <li>Qué combinación exacta vendí más: <span class="value">Sticker</span> de <span class="value">Britney</span>, <span class="value">Taza</span> de <span class="value">Sailor Moon</span>, <span class="value">Postal</span> de <span class="value">Chihiro</span>, etc.</li>
+    </ol>
+    <p>Por lo tanto, antes de anotar ventas necesito ordenar el mundo. No empiezo por la venta; empiezo por los cuadernos básicos del negocio.</p>
+
+    <h2>2.&nbsp;El cuaderno de soportes: <code>articulos</code></h2>
+    <p>Primero separo el soporte. En la mesa tengo cosas físicas o comerciales: <span class="value">stickers</span>, <span class="value">tazas</span>, <span class="value">pines</span>, <span class="value">postales</span> y <span class="value">cuadros</span>. Eso lo registro en <code>articulos</code>.</p>
+    <p>La entidad <code>articulos</code> no representa todavía un producto completo que se vende. Representa el tipo de cosa sobre la que después puede aparecer un diseño.</p>
+    <p>Por eso leo la relación:</p>
+    <p><code>articulos</code> — <code>aporta soporte a</code> → <code>productos_comercializables</code></p>
+    <p>Esto quiere decir: el artículo le da el soporte al producto vendible. Si después vendo una <span class="value">Taza</span> de <span class="value">Sailor Moon</span>, el soporte viene de <code>articulos</code>; si vendo un <span class="value">Sticker</span> de <span class="value">Britney</span>, el soporte también viene de <code>articulos</code>.</p>
+
+    <h3>Atributos de <code>articulos</code></h3>
+    <p><code>id_articulo</code>: es el identificador interno del artículo. Me sirve para que la base pueda distinguir sin ambigüedad un soporte de otro. No debo confundirlo con el nombre visible del artículo. En la mesa yo veo una <span class="value">Taza</span>; no veo el número <code>id_articulo</code>, pero la base necesita ese número para relacionar registros sin depender de textos escritos a mano.</p>
+    <p><code>nombre_articulo</code>: es el nombre del soporte o tipo de artículo. Me sirve para registrar valores como <span class="value">Sticker</span>, <span class="value">Taza</span>, <span class="value">Pin</span>, <span class="value">Postal</span> o <span class="value">Cuadro</span>. No debo confundirlo con el diseño. <span class="value">Taza</span> no es un diseño; <span class="value">Britney</span> no es un artículo. <span class="value">Taza</span> me dice “sobre qué objeto se imprime o se aplica algo”; <span class="value">Britney</span> me dice “qué motivo gráfico lleva”.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>articulos</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_articulo</code></th>
+            <th><code>nombre_articulo</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><span class="value">Sticker</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><span class="value">Taza</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><span class="value">Pin</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><span class="value">Postal</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><span class="value">Cuadro</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>articulos</code> — <code>aporta soporte a</code> → <code>productos_comercializables</code></h3>
+    <p>Un artículo puede aportar soporte a muchos productos comercializables. Por ejemplo, <span class="value">Sticker</span> puede combinarse con <span class="value">Britney</span>, con <span class="value">Chihiro</span>, con <span class="value">Frida</span>, con <span class="value">Titanic</span> y con muchos otros diseños. Por eso, desde el lado de <code>articulos</code>, puedo terminar teniendo muchos <code>productos_comercializables</code>.</p>
+    <p>Pero cada <code>producto_comercializable</code> necesita un solo artículo. Si estoy hablando de <span class="value">Sticker</span> de <span class="value">Britney</span>, el soporte es <span class="value">Sticker</span>. No puede ser, al mismo tiempo, <span class="value">Sticker</span> y <span class="value">Taza</span>. Si fuera otra combinación, sería otro producto comercializable.</p>
+    <p>Si esta cardinalidad fuera distinta, tendría problemas. Si un artículo solo pudiera usarse una vez, no podría tener <span class="value">Sticker</span> de <span class="value">Britney</span> y <span class="value">Sticker</span> de <span class="value">Chihiro</span> al mismo tiempo. Y si un producto comercializable pudiera tener muchos artículos a la vez, no sabría si estoy vendiendo un sticker, una taza o un cuadro.</p>
+
+    <h2>3.&nbsp;El cuaderno de motivos gráficos: <code>disenos</code></h2>
+    <p>Después separo el diseño. En la mesa no solo hay soportes; hay motivos gráficos concretos. Algunos ejemplos que puedo usar para practicar son <span class="value">Britney</span>, <span class="value">Sailor Moon</span>, <span class="value">Chihiro</span>, <span class="value">Frida</span>, <span class="value">Titanic</span>, <span class="value">Venus</span>, <span class="value">Miley</span> o <span class="value">Freddie M</span>.</p>
+    <p>Eso lo registro en <code>disenos</code>.</p>
+    <p>Leo la relación:</p>
+    <p><code>disenos</code> — <code>aporta motivo a</code> → <code>productos_comercializables</code></p>
+    <p>El diseño aporta el motivo gráfico. Es decir, me dice qué imagen, personaje, referencia estética o motivo aparece sobre el soporte.</p>
+
+    <h3>Atributos de <code>disenos</code></h3>
+    <p><code>id_diseno</code>: es el identificador interno del diseño. Me sirve para que la base pueda distinguir un diseño de otro, aunque los nombres estén parecidos o puedan escribirse con variantes. No debo confundirlo con el nombre visible del diseño. En la conversación del puesto yo digo “el de <span class="value">Chihiro</span>”, pero la base necesita un identificador estable.</p>
+    <p><code>nombre_diseno</code>: es el nombre del motivo gráfico. Me sirve para cargar valores como <span class="value">Britney</span>, <span class="value">Sailor Moon</span>, <span class="value">Chihiro</span>, <span class="value">Frida</span> o <span class="value">Titanic</span>. No debo confundirlo con el artículo ni con el producto completo. <span class="value">Britney</span> no es, por sí sola, un producto vendible: puede estar en un sticker, en una taza o en una postal. El diseño solo me dice el motivo, no el soporte.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>disenos</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_diseno</code></th>
+            <th><code>nombre_diseno</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="value">Britney</span></td></tr>
+          <tr><td>2</td><td><span class="value">Sailor Moon</span></td></tr>
+          <tr><td>3</td><td><span class="value">Chihiro</span></td></tr>
+          <tr><td>4</td><td><span class="value">Frida</span></td></tr>
+          <tr><td>5</td><td><span class="value">Titanic</span></td></tr>
+          <tr><td>6</td><td><span class="value">Venus</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>disenos</code> — <code>aporta motivo a</code> → <code>productos_comercializables</code></h3>
+    <p>Un diseño puede aportar motivo a muchos productos comercializables. Por ejemplo, <span class="value">Britney</span> puede existir como <span class="value">Sticker</span>, como <span class="value">Taza</span>, como <span class="value">Postal</span> o como <span class="value">Cuadro</span>. Entonces un mismo diseño puede participar en muchas combinaciones vendibles.</p>
+    <p>Pero cada <code>producto_comercializable</code> tiene un solo diseño. Si estoy hablando de <span class="value">Sticker</span> de <span class="value">Britney</span>, el diseño es <span class="value">Britney</span>. Si fuera <span class="value">Sticker</span> de <span class="value">Chihiro</span>, ya sería otro producto.</p>
+    <p>La cardinalidad tiene sentido porque separa dos preguntas diferentes:</p>
+    <ul>
+      <li>¿Cuánto vendí del diseño <span class="value">Britney</span> en total?</li>
+      <li>¿Cuánto vendí específicamente de <span class="value">Sticker</span> de <span class="value">Britney</span>?</li>
+    </ul>
+    <p>Si mezclara todo, perdería esa capacidad de consulta.</p>
+
+    <h2>4.&nbsp;Recién ahora aparece lo vendible: <code>productos_comercializables</code></h2>
+    <p>Ahora sí puedo armar lo que realmente vendo. En la mesa no vendo “un artículo” en abstracto ni “un diseño” suelto. Vendo combinaciones concretas: <span class="value">Sticker</span> de <span class="value">Britney</span>, <span class="value">Taza</span> de <span class="value">Sailor Moon</span>, <span class="value">Postal</span> de <span class="value">Chihiro</span>, <span class="value">Pin</span> de <span class="value">Venus</span>, <span class="value">Cuadro</span> de <span class="value">Titanic</span>.</p>
+    <p>Eso es <code>productos_comercializables</code>.</p>
+    <p>La tabla <code>productos_comercializables</code> es el lugar donde junto el soporte y el diseño. Es muy importante porque ahí empieza a existir el producto que puede tener precio, costo, ventas y stock.</p>
+
+    <h3>Atributos de <code>productos_comercializables</code></h3>
+    <p><code>id_producto_comercializable</code>: es el identificador interno del producto vendible. Me sirve para distinguir una combinación exacta de soporte y diseño. No debo confundirlo con <code>id_articulo</code> ni con <code>id_diseno</code>. <code>id_articulo</code> identifica el soporte; <code>id_diseno</code> identifica el motivo; <code>id_producto_comercializable</code> identifica la combinación concreta que puedo vender.</p>
+    <p><code>id_diseno FK</code>: es la clave foránea que apunta al diseño del producto. Me sirve para saber qué motivo gráfico lleva ese producto comercializable. No debo confundirlo con <code>nombre_diseno</code>; aquí no copio el texto <span class="value">Britney</span> o <span class="value">Chihiro</span>; guardo el identificador que conecta este producto con una fila de <code>disenos</code>.</p>
+    <p><code>id_articulo FK</code>: es la clave foránea que apunta al artículo o soporte. Me sirve para saber si este producto es un <span class="value">Sticker</span>, una <span class="value">Taza</span>, un <span class="value">Pin</span>, una <span class="value">Postal</span> o un <span class="value">Cuadro</span>. No debo confundirlo con <code>nombre_articulo</code>; aquí no copio el texto <span class="value">Sticker</span>; guardo el identificador que conecta este producto con una fila de <code>articulos</code>.</p>
+    <p><code>precio_referencia_actual</code>: es el precio de referencia vigente del producto. Me sirve para tener un precio orientativo actual cuando voy a vender. No debo confundirlo con <code>precio_unitario_historico</code>, porque el precio de referencia actual puede cambiar más adelante, mientras que el precio histórico de una venta pasada debe quedar congelado tal como fue cobrado.</p>
+    <p><code>costo_referencia_actual</code>: es el costo de referencia vigente del producto. Me sirve para estimar la ganancia actual esperada. No debo confundirlo con <code>costo_unitario_historico</code>, porque el costo actual puede cambiar por inflación, nuevos insumos o cambios de proveedor, pero una venta pasada debe conservar el costo que se tomó en ese momento.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>productos_comercializables</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_producto_comercializable</code></th>
+            <th><code>id_diseno FK</code></th>
+            <th><code>id_articulo FK</code></th>
+            <th>Producto interpretado</th>
+            <th><code>precio_referencia_actual</code></th>
+            <th><code>costo_referencia_actual</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td><span class="value">Sticker</span> de <span class="value">Britney</span></td>
+            <td>800</td>
+            <td>250</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td><span class="value">Postal</span> de <span class="value">Chihiro</span></td>
+            <td>1.800</td>
+            <td>700</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td><span class="value">Taza</span> de <span class="value">Sailor Moon</span></td>
+            <td>5.000</td>
+            <td>2.500</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>6</td>
+            <td>3</td>
+            <td><span class="value">Pin</span> de <span class="value">Venus</span></td>
+            <td>5.000</td>
+            <td>2.000</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td><span class="value">Cuadro</span> de <span class="value">Titanic</span></td>
+            <td>10.000</td>
+            <td>5.500</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>Si cargo dos veces la misma combinación, por ejemplo, dos filas distintas para <span class="value">Sticker</span> de <span class="value">Britney</span>, después puedo dividir mal las ventas y el stock. Algunas ventas quedarían asociadas a un producto y otras ventas al duplicado. Por eso la combinación entre diseño y artículo debe ser única.</p>
+    </div>
+
+    <h2>5.&nbsp;Antes de registrar ventas: también necesito saber por dónde vendo, dónde vendo y cómo me pagan</h2>
+    <p>Ya tengo el catálogo vendible. Ahora puedo mirar el puesto en <span class="value">Nerdo</span> y pensar: si vendo algo, no alcanza con saber qué producto salió. También necesito saber por qué canal se hizo la venta, si fue en una feria concreta y cómo me pagaron.</p>
+    <p>En este sistema, eso se reparte en tres cuadernos:</p>
+    <ul>
+      <li><code>canales_venta</code></li>
+      <li><code>ferias</code></li>
+      <li><code>medios_pago</code></li>
+    </ul>
+    <p>No son la venta en sí. Son catálogos o listas que después uso para clasificar cada venta.</p>
+
+    <h2>6.&nbsp;El canal general: <code>canales_venta</code></h2>
+    <p><code>canales_venta</code> me dice por dónde se realizó la venta en un sentido amplio. Puede ser <span class="value">Feria</span>, <span class="value">Instagram</span> o <span class="value">Tienda online</span>.</p>
+    <p>La relación del DER dice:</p>
+    <p><code>canales_venta</code> — <code>se realizan vía</code> → <code>ventas</code></p>
+    <p>Aunque gramaticalmente yo lo leo más naturalmente desde la venta: las <code>ventas</code> <code>se realizan vía</code> un canal de venta. Si estoy en <span class="value">Nerdo</span>, el canal general es <span class="value">Feria</span>. Si otro día vendo por mensaje directo, puede ser <span class="value">Instagram</span>. Si vendo por una tienda web, puede ser <span class="value">Tienda online</span>.</p>
+
+    <h3>Atributos de <code>canales_venta</code></h3>
+    <p><code>id_canal_venta</code>: es el identificador interno del canal. Me sirve para que cada venta pueda apuntar a un canal sin escribir a mano <span class="value">Feria</span>, <span class="value">Instagram</span> o <span class="value">Tienda online</span> cada vez. No debo confundirlo con el nombre visible del canal.</p>
+    <p><code>nombre_canal_venta</code>: es el nombre del canal. Me sirve para cargar valores como <span class="value">Feria</span>, <span class="value">Instagram</span> o <span class="value">Tienda online</span>. No debo confundirlo con la feria concreta. <span class="value">Feria</span> es el canal general; <span class="value">Nerdo</span> es una feria concreta.</p>
+    <p><code>comision_porcentual_canal</code>: es la comisión porcentual asociada al canal, cuando corresponde. Me sirve para canales no feria, si quiero registrar que un canal tiene una comisión general. No debo confundirla con <code>comision_porcentual_feria</code>, porque en el caso de ferias la comisión puede depender de la feria concreta, no del canal general <span class="value">Feria</span>.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>canales_venta</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_canal_venta</code></th>
+            <th><code>nombre_canal_venta</code></th>
+            <th><code>comision_porcentual_canal</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="value">Feria</span></td><td>0</td></tr>
+          <tr><td>2</td><td><span class="value">Instagram</span></td><td>0</td></tr>
+          <tr><td>3</td><td><span class="value">Tienda online</span></td><td>10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>canales_venta</code> — <code>se realizan vía</code> → <code>ventas</code></h3>
+    <p>Un canal puede tener muchas ventas. En <span class="value">Nerdo</span>, muchas ventas del día se realizan vía <span class="value">Feria</span>. En otro contexto, muchas ventas podrían realizarse vía <span class="value">Instagram</span>.</p>
+    <p>Pero cada venta tiene un solo canal. Una operación concreta no debería ser, al mismo tiempo, venta por <span class="value">Feria</span> y venta por <span class="value">Instagram</span>. Si realmente hubiera una situación mixta, habría que modelarla de otro modo, pero para este sistema mínimo cada venta se clasifica por un canal principal.</p>
+
+    <h2>7.&nbsp;La feria concreta: <code>ferias</code></h2>
+    <p>Si el canal es <span class="value">Feria</span>, todavía falta decir en qué feria concreta vendí. No alcanza con decir “fue una feria”, porque no es lo mismo vender en <span class="value">Nerdo</span> que en <span class="value">Harajuku</span> o en <span class="value">Barrio Chino</span>. Las ventas pueden tener comportamiento distinto según la feria: públicos distintos, productos que rotan distinto, comisiones distintas, fechas distintas.</p>
+    <p>Por eso existe <code>ferias</code>.</p>
+    <p>La relación dice:</p>
+    <p><code>ferias</code> — <code>pueden realizarse en</code> → <code>ventas</code></p>
+    <p>La lectura natural para mí es: algunas <code>ventas</code> pueden realizarse en una feria concreta. En la jornada que estoy imaginando, esa feria es <span class="value">Nerdo</span>.</p>
+
+    <h3>Atributos de <code>ferias</code></h3>
+    <p><code>id_feria</code>: es el identificador interno de la feria. Me sirve para que una venta pueda apuntar a <span class="value">Nerdo</span> sin escribir ese nombre manualmente cada vez. No debo confundirlo con <code>id_canal_venta</code>: <code>id_canal_venta</code> me dice que el canal es <span class="value">Feria</span>; <code>id_feria</code> me dice cuál feria concreta fue.</p>
+    <p><code>nombre_feria</code>: es el nombre de la feria. Me sirve para valores como <span class="value">Nerdo</span>, <span class="value">Harajuku</span> o <span class="value">Barrio Chino</span>. No debo confundirlo con el canal. <span class="value">Nerdo</span> no es un canal general; es un evento o espacio concreto dentro del canal <span class="value">Feria</span>.</p>
+    <p><code>comision_porcentual_feria</code>: es la comisión porcentual propia de esa feria. Me sirve porque dos ferias pueden cobrar distinto. No debo confundirla con <code>comision_porcentual_aplicada</code>, porque la comisión aplicada queda guardada en cada venta para conservar la historia de esa operación.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>ferias</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_feria</code></th>
+            <th><code>nombre_feria</code></th>
+            <th><code>comision_porcentual_feria</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="value">Nerdo</span></td><td>10</td></tr>
+          <tr><td>2</td><td><span class="value">Harajuku</span></td><td>10</td></tr>
+          <tr><td>3</td><td><span class="value">Barrio Chino</span></td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>ferias</code> — <code>pueden realizarse en</code> → <code>ventas</code></h3>
+    <p>Una feria puede tener muchas ventas. En una jornada de <span class="value">Nerdo</span>, puedo cargar veinte, treinta o cincuenta ventas asociadas a esa misma feria.</p>
+    <p>Pero una venta puede estar asociada a cero o una feria. Si la venta fue por <span class="value">Instagram</span>, no corresponde feria. Si la venta fue por <span class="value">Tienda online</span>, tampoco. Si fue por <span class="value">Feria</span>, entonces sí corresponde una feria concreta, en este caso <span class="value">Nerdo</span>.</p>
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>Si cargo una venta con canal <span class="value">Feria</span> pero dejo vacía la feria, después voy a saber que vendí en una feria, pero no voy a poder saber en cuál. Eso rompe una de las utilidades del sistema: comparar ventas por feria concreta. En cambio, si cargo una venta por <span class="value">Instagram</span> y le pongo <span class="value">Nerdo</span> como feria, también queda mal, porque estoy mezclando dos situaciones distintas.</p>
+    </div>
+
+    <h2>8.&nbsp;Cómo me pagan: <code>medios_pago</code></h2>
+    <p>Ahora miro cómo me pagan. En la feria puede entrar plata por <span class="value">Efectivo</span>, <span class="value">Transferencia</span> o <span class="value">MercadoPago</span>. Eso lo registro en <code>medios_pago</code>.</p>
+    <p>La relación dice:</p>
+    <p><code>medios_pago</code> — <code>se pagan mediante</code> → <code>ventas</code></p>
+    <p>La lectura natural es: las <code>ventas</code> <code>se pagan mediante</code> un medio de pago.</p>
+
+    <h3>Atributos de <code>medios_pago</code></h3>
+    <p><code>id_medio_pago</code>: es el identificador interno del medio de pago. Me sirve para que cada venta apunte a un medio de pago válido. No debo confundirlo con el monto cobrado. El medio de pago responde “cómo me pagaron”, no “cuánto me pagaron”.</p>
+    <p><code>nombre_medio_pago</code>: es el nombre del medio. Me sirve para valores como <span class="value">Efectivo</span>, <span class="value">Transferencia</span> y <span class="value">MercadoPago</span>. No debo confundirlo con el canal de venta. Puedo vender en <span class="value">Nerdo</span> y cobrar por <span class="value">MercadoPago</span>; puedo vender por <span class="value">Instagram</span> y cobrar por <span class="value">Transferencia</span>. Canal y medio de pago no son lo mismo.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>medios_pago</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_medio_pago</code></th>
+            <th><code>nombre_medio_pago</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="value">Efectivo</span></td></tr>
+          <tr><td>2</td><td><span class="value">Transferencia</span></td></tr>
+          <tr><td>3</td><td><span class="value">MercadoPago</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>medios_pago</code> — <code>se pagan mediante</code> → <code>ventas</code></h3>
+    <p>Un medio de pago puede aparecer en muchas ventas. Puedo tener muchas ventas pagadas por <span class="value">MercadoPago</span> durante el día.</p>
+    <p>Pero cada venta tiene un solo medio de pago en este modelo. No estoy modelando pagos mixtos. Si una persona paga mitad en efectivo y mitad por transferencia, este sistema mínimo no lo representa con detalle. Para este examen, simplifico: una venta, un medio de pago principal.</p>
+
+    <h2>9.&nbsp;Ahora sí ocurre una venta: <code>ventas</code></h2>
+    <p>Empieza la jornada. Estoy en <span class="value">Nerdo</span> y una persona se acerca al puesto. Me compra varios productos. En ese momento ocurre una venta real.</p>
+    <p>Pero tengo que pensar bien qué estoy anotando. La venta no es todavía cada producto individual. La venta es la operación general: ocurrió en una fecha, por un canal, quizá en una feria concreta, con un medio de pago, y con una comisión aplicada.</p>
+    <p>Eso va en <code>ventas</code>.</p>
+
+    <h3>Atributos de <code>ventas</code></h3>
+    <p><code>id_venta</code>: es el identificador interno de la venta. Me sirve para distinguir una operación comercial de otra. No debo confundirlo con la fecha ni con el total. Dos ventas pueden ocurrir el mismo día, en la misma feria, con el mismo medio de pago y hasta por montos parecidos. La base necesita un número interno para decir: “esta venta es esta y no aquella”.</p>
+    <p><code>fecha_venta</code>: es la fecha en que ocurrió la venta. Me sirve para consultar ventas por día o por rango de fechas. No debo confundirla con <code>fecha_movimiento</code>. <code>fecha_venta</code> pertenece a la operación comercial; <code>fecha_movimiento</code> pertenece al cambio de stock. Muchas veces coinciden, pero no son lo mismo. Una venta genera una salida de stock, pero también puedo tener movimientos de stock por reposición, merma o ajuste en días donde no hubo venta.</p>
+    <p><code>id_canal_venta FK</code>: es la clave foránea que conecta la venta con <code>canales_venta</code>. Me sirve para saber si la venta fue por <span class="value">Feria</span>, <span class="value">Instagram</span> o <span class="value">Tienda online</span>. No debo confundirlo con <code>id_feria FK</code>: el canal dice el tipo general de vía; la feria dice el lugar concreto cuando el canal es <span class="value">Feria</span>.</p>
+    <p><code>id_feria FK</code>: es la clave foránea que conecta la venta con <code>ferias</code>, si corresponde. Me sirve para saber que esta venta fue en <span class="value">Nerdo</span>. No debo confundirlo con <code>id_canal_venta FK</code>: si <code>id_canal_venta FK</code> apunta a <span class="value">Feria</span>, entonces <code>id_feria FK</code> dice cuál feria.</p>
+    <p><code>id_medio_pago FK</code>: es la clave foránea que conecta la venta con <code>medios_pago</code>. Me sirve para saber si me pagaron con <span class="value">Efectivo</span>, <span class="value">Transferencia</span> o <span class="value">MercadoPago</span>. No debo confundirlo con canal de venta ni con feria. Puedo estar en <span class="value">Nerdo</span> y cobrar por <span class="value">MercadoPago</span>; son dimensiones distintas del hecho de venta.</p>
+    <p><code>comision_porcentual_aplicada</code>: es la comisión porcentual que efectivamente aplico a esa venta. Me sirve para conservar el dato histórico. No debo confundirla con <code>comision_porcentual_feria</code> ni con <code>comision_porcentual_canal</code>: esas son referencias en catálogos; la comisión aplicada queda guardada en la venta concreta. Si mañana cambia la comisión de <span class="value">Nerdo</span>, las ventas pasadas no deberían cambiar.</p>
+
+    <div class="block registro">
+      <div class="block-title"><span class="icon">🧾</span>Registro que hago</div>
+      <p>Cuando ocurre una venta, primero cargo una fila en <code>ventas</code>. Esa fila no dice todavía todos los productos vendidos. Dice el marco de la operación: fecha, canal, feria si corresponde, medio de pago y comisión aplicada.</p>
+    </div>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>ventas</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_venta</code></th>
+            <th><code>fecha_venta</code></th>
+            <th><code>id_canal_venta FK</code></th>
+            <th><code>id_feria FK</code></th>
+            <th><code>id_medio_pago FK</code></th>
+            <th><code>comision_porcentual_aplicada</code></th>
+            <th>Interpretación concreta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2024-05-12</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>10</td>
+            <td>Venta en <span class="value">Nerdo</span>, canal <span class="value">Feria</span>, pagada por <span class="value">MercadoPago</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2024-05-12</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10</td>
+            <td>Venta en <span class="value">Nerdo</span>, canal <span class="value">Feria</span>, pagada en <span class="value">Efectivo</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2024-05-12</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>10</td>
+            <td>Venta en <span class="value">Nerdo</span>, canal <span class="value">Feria</span>, pagada por <span class="value">Transferencia</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>Si no existiera <code>id_venta</code>, dos ventas hechas el mismo día en <span class="value">Nerdo</span>, pagadas con <span class="value">MercadoPago</span>, podrían parecer indistinguibles. En el cuaderno humano quizá las distingo porque recuerdo el orden en que ocurrieron, pero la base no trabaja con recuerdos: necesita un identificador estable.</p>
+    </div>
+
+    <h2>10.&nbsp;Una venta necesita abrirse en renglones: <code>detalle_ventas</code></h2>
+    <p>Ahora viene la parte central. Una persona no siempre compra una sola cosa. Puede comprar un <span class="value">Sticker</span> de <span class="value">Britney</span>, una <span class="value">Postal</span> de <span class="value">Chihiro</span> y un <span class="value">Pin</span> de <span class="value">Venus</span> en la misma operación. Eso es una sola venta, no tres ventas separadas.</p>
+    <p>La relación dice:</p>
+    <p><code>ventas</code> — <code>se detalla en</code> → <code>detalle_ventas</code></p>
+    <p>Esta relación es fundamental. La venta general se guarda en <code>ventas</code>, pero los productos concretos vendidos se guardan en <code>detalle_ventas</code>.</p>
+    <p>Si yo no tuviera <code>detalle_ventas</code>, tendría dos opciones malas:</p>
+    <ol>
+      <li>Meter todos los productos en una sola celda, como “Sticker Britney + Postal Chihiro + Pin Venus”.</li>
+      <li>Registrar cada producto como si fuera una venta distinta.</li>
+    </ol>
+    <p>La primera opción arruina las consultas. La segunda opción falsea la realidad comercial, porque una sola operación con un solo pago aparecería como varias ventas independientes.</p>
+
+    <h3>Atributos de <code>detalle_ventas</code></h3>
+    <p><code>id_detalle_venta</code>: es el identificador interno del renglón de detalle. Me sirve para distinguir un renglón de otro dentro de una venta. No debo confundirlo con <code>id_venta</code>: <code>id_venta</code> identifica la operación general; <code>id_detalle_venta</code> identifica un renglón específico de esa operación.</p>
+    <p><code>id_venta FK</code>: es la clave foránea que conecta el renglón con la venta a la que pertenece. Me sirve para que el renglón no quede suelto. No debo confundirlo con <code>id_detalle_venta</code>: <code>id_detalle_venta</code> nombra al renglón; <code>id_venta FK</code> dice de qué venta cuelga ese renglón.</p>
+    <p><code>id_producto_comercializable FK</code>: es la clave foránea que conecta el renglón con el producto vendido. Me sirve para saber qué combinación exacta salió: por ejemplo <span class="value">Sticker</span> de <span class="value">Britney</span> o <span class="value">Postal</span> de <span class="value">Chihiro</span>. No debo confundirlo con <code>id_articulo FK</code> ni con <code>id_diseno FK</code>, porque aquí ya estoy apuntando al producto completo, no a una de sus partes.</p>
+    <p><code>cantidad</code>: es la cantidad vendida de ese producto en ese renglón. Me sirve para saber si se vendió una unidad, dos unidades, tres unidades, etc. No debo confundirla con la <code>cantidad</code> de <code>movimientos_stock</code>. En <code>detalle_ventas</code>, la cantidad expresa cuántas unidades se vendieron. En <code>movimientos_stock</code>, la cantidad expresa cómo cambia el stock, y puede ser negativa cuando sale mercadería.</p>
+    <p><code>precio_unitario_historico</code>: es el precio unitario que efectivamente cobré en ese momento. Me sirve para conservar la historia de la venta. No debo confundirlo con <code>precio_referencia_actual</code>. Si hoy el <span class="value">Sticker</span> de <span class="value">Britney</span> cuesta 800 y dentro de dos meses cuesta 1.200, la venta de hoy debe seguir mostrando 800.</p>
+    <p><code>costo_unitario_historico</code>: es el costo unitario que tomo para calcular la ganancia de esa venta. Me sirve para que la ganancia histórica no cambie cuando cambien los costos actuales. No debo confundirlo con <code>costo_referencia_actual</code>, que vive en el producto como referencia vigente.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Una venta con varios renglones en <code>detalle_ventas</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_detalle_venta</code></th>
+            <th><code>id_venta FK</code></th>
+            <th><code>id_producto_comercializable FK</code></th>
+            <th>Producto vendido</th>
+            <th><code>cantidad</code></th>
+            <th><code>precio_unitario_historico</code></th>
+            <th><code>costo_unitario_historico</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td><span class="value">Sticker</span> de <span class="value">Britney</span></td>
+            <td>2</td>
+            <td>800</td>
+            <td>250</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>2</td>
+            <td><span class="value">Postal</span> de <span class="value">Chihiro</span></td>
+            <td>1</td>
+            <td>1.800</td>
+            <td>700</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>1</td>
+            <td>4</td>
+            <td><span class="value">Pin</span> de <span class="value">Venus</span></td>
+            <td>1</td>
+            <td>5.000</td>
+            <td>2.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>ventas</code> — <code>se detalla en</code> → <code>detalle_ventas</code></h3>
+    <p>Una venta puede tener muchos renglones de detalle. Eso representa el mundo real: alguien puede comprar varios productos juntos.</p>
+    <p>Pero cada renglón de detalle pertenece a una sola venta. El renglón “2 unidades de <span class="value">Sticker</span> de <span class="value">Britney</span>” no puede pertenecer simultáneamente a la venta 1 y a la venta 2. Si ocurriera algo parecido, habría que duplicar o separar el registro, pero no compartir el mismo renglón entre dos ventas.</p>
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>Si cargo una venta en <code>ventas</code> pero no cargo sus renglones en <code>detalle_ventas</code>, la base sabe que “hubo una venta”, pero no sabe qué se vendió. Eso no sirve para saber productos más vendidos, diseños más vendidos, artículos más vendidos ni ganancia por producto. La venta queda como una cáscara vacía.</p>
+    </div>
+
+    <h2>11.&nbsp;El producto se registra en renglones de venta</h2>
+    <p>Además de mirar la relación entre <code>ventas</code> y <code>detalle_ventas</code>, tengo que mirar esta otra:</p>
+    <p><code>productos_comercializables</code> — <code>se registra en renglones de</code> → <code>detalle_ventas</code></p>
+    <p>Esta relación me dice que cada renglón de <code>detalle_ventas</code> registra un producto comercializable. No registra un diseño suelto ni un artículo suelto. Registra la combinación vendible.</p>
+    <p>Si vendí <span class="value">Sticker</span> de <span class="value">Britney</span>, el renglón apunta a ese <code>producto_comercializable</code>. Si vendí <span class="value">Taza</span> de <span class="value">Sailor Moon</span>, apunta a otro.</p>
+
+    <h3>Cardinalidad de <code>productos_comercializables</code> — <code>se registra en renglones de</code> → <code>detalle_ventas</code></h3>
+    <p>Un producto comercializable puede aparecer en muchos renglones de venta. Por ejemplo, <span class="value">Sticker</span> de <span class="value">Britney</span> puede venderse diez veces durante el día, y cada venta puede dejar un renglón distinto.</p>
+    <p>Pero cada renglón de detalle registra un solo producto comercializable. Un renglón no debería decir “Sticker de Britney y Postal de Chihiro” al mismo tiempo. Si la persona compró dos productos distintos, cargo dos renglones.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Varias ventas con varios renglones:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_venta</code></th>
+            <th>Situación concreta</th>
+            <th>Renglones en <code>detalle_ventas</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Una persona compra varias cosas y paga con <span class="value">MercadoPago</span></td>
+            <td>2 <span class="value">Sticker</span> de <span class="value">Britney</span>; 1 <span class="value">Postal</span> de <span class="value">Chihiro</span>; 1 <span class="value">Pin</span> de <span class="value">Venus</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Otra persona compra regalos chicos y paga en <span class="value">Efectivo</span></td>
+            <td>1 <span class="value">Sticker</span> de <span class="value">Frida</span>; 1 <span class="value">Sticker</span> de <span class="value">Titanic</span>; 1 <span class="value">Pin</span> de <span class="value">Venus</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Otra persona compra algo más caro y paga por <span class="value">Transferencia</span></td>
+            <td>1 <span class="value">Taza</span> de <span class="value">Sailor Moon</span>; 1 <span class="value">Cuadro</span> de <span class="value">Titanic</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>12.&nbsp;Hasta acá registré la venta, pero todavía no cuidé el stock</h2>
+    <p>Ahora viene otro problema. Si vendo productos en <span class="value">Nerdo</span>, no solo entra plata. También salen unidades de la mesa o de la caja. Si vendí 2 <span class="value">Sticker</span> de <span class="value">Britney</span>, deberían quedar 2 menos. Si vendí 1 <span class="value">Postal</span> de <span class="value">Chihiro</span>, debería quedar 1 menos.</p>
+    <p>Pero en este modelo el stock no se descuenta solo. No hay un mecanismo automático que diga: “cada vez que cargo <code>detalle_ventas</code>, se crea automáticamente un movimiento de stock”. Por eso necesito registrar los movimientos.</p>
+    <p>La relación clave es:</p>
+    <p><code>productos_comercializables</code> — <code>su stock se obtiene de</code> → <code>movimientos_stock</code></p>
+    <p>Esto quiere decir que el stock de un producto comercializable no está guardado como una cifra fija en <code>productos_comercializables</code>. El stock se reconstruye mirando los movimientos que tuvo ese producto.</p>
+    <p>Si entraron unidades, sumo. Si salieron unidades, resto.</p>
+
+    <h2>13.&nbsp;El cuaderno de tipos de movimiento: <code>tipos_movimiento_stock</code></h2>
+    <p>Antes de cargar movimientos, necesito clasificar por qué cambia el stock. No es lo mismo que baje stock porque vendí, que porque se rompió algo, que porque encontré unidades de más, que porque repuse.</p>
+    <p>Por eso existe <code>tipos_movimiento_stock</code>.</p>
+    <p>La relación dice:</p>
+    <p><code>tipos_movimiento_stock</code> — <code>clasifica</code> → <code>movimientos_stock</code></p>
+    <p>Los valores posibles dentro de <code>tipos_movimiento_stock</code> pueden ser <span class="value">alta inicial</span>, <span class="value">reposición</span>, <span class="value">venta</span>, <span class="value">merma</span> y <span class="value">ajuste</span>. Van en cursiva porque son valores cargables, no nombres de entidades ni relaciones.</p>
+
+    <h3>Atributos de <code>tipos_movimiento_stock</code></h3>
+    <p><code>id_tipo_movimiento_stock</code>: es el identificador interno del tipo de movimiento. Me sirve para que cada movimiento de stock apunte a un tipo válido. No debo confundirlo con el movimiento concreto. El tipo es la categoría; el movimiento es el hecho puntual.</p>
+    <p><code>nombre_tipo_movimiento_stock</code>: es el nombre del tipo. Me sirve para cargar valores como <span class="value">alta inicial</span>, <span class="value">reposición</span>, <span class="value">venta</span>, <span class="value">merma</span> o <span class="value">ajuste</span>. No debo confundirlo con la cantidad. El tipo dice por qué cambia el stock; la cantidad dice cuánto cambia.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>tipos_movimiento_stock</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_tipo_movimiento_stock</code></th>
+            <th><code>nombre_tipo_movimiento_stock</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="value">alta inicial</span></td></tr>
+          <tr><td>2</td><td><span class="value">reposición</span></td></tr>
+          <tr><td>3</td><td><span class="value">venta</span></td></tr>
+          <tr><td>4</td><td><span class="value">merma</span></td></tr>
+          <tr><td>5</td><td><span class="value">ajuste</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Cardinalidad de <code>tipos_movimiento_stock</code> — <code>clasifica</code> → <code>movimientos_stock</code></h3>
+    <p>Un tipo de movimiento puede clasificar muchos movimientos. Puedo tener muchas salidas por <span class="value">venta</span> durante el día, muchas <span class="value">reposiciones</span> en distintos momentos, o varias <span class="value">mermas</span> si encuentro productos dañados.</p>
+    <p>Pero cada movimiento de stock tiene un solo tipo. Un movimiento concreto no debería ser simultáneamente <span class="value">venta</span> y <span class="value">merma</span>. Si vendo una taza, cargo un movimiento de tipo <span class="value">venta</span>. Si se rompe una taza, cargo un movimiento de tipo <span class="value">merma</span>.</p>
+
+    <h2>14.&nbsp;El cuaderno de entradas y salidas: <code>movimientos_stock</code></h2>
+    <p>Ahora sí cargo los movimientos de stock. Este cuaderno es el que permite reconstruir cuántas unidades quedan.</p>
+    <p>La tabla <code>movimientos_stock</code> registra entradas y salidas concretas. Si entra mercadería, la cantidad es positiva. Si sale mercadería por venta o merma, la cantidad es negativa.</p>
+
+    <h3>Atributos de <code>movimientos_stock</code></h3>
+    <p><code>id_movimiento_stock</code>: es el identificador interno del movimiento de stock. Me sirve para distinguir un movimiento de otro. No debo confundirlo con <code>id_producto_comercializable</code>: un producto puede tener muchos movimientos a lo largo del tiempo.</p>
+    <p><code>id_producto_comercializable FK</code>: es la clave foránea que conecta el movimiento con el producto cuyo stock cambia. Me sirve para saber a qué producto le sumo o resto unidades. No debo confundirlo con <code>id_detalle_venta FK</code>: el producto dice qué stock cambia; el detalle de venta dice, si corresponde, qué renglón de venta originó la salida.</p>
+    <p><code>id_tipo_movimiento_stock FK</code>: es la clave foránea que conecta el movimiento con su tipo. Me sirve para saber si el movimiento fue por <span class="value">venta</span>, <span class="value">reposición</span>, <span class="value">merma</span>, <span class="value">ajuste</span> o <span class="value">alta inicial</span>. No debo confundirlo con la cantidad: puedo tener una <span class="value">venta</span> de −2 o una <span class="value">venta</span> de −1; el tipo clasifica el motivo, la cantidad mide el cambio.</p>
+    <p><code>fecha_movimiento</code>: es la fecha en que ocurre el cambio de stock. Me sirve para reconstruir el inventario en el tiempo. No debo confundirla con <code>fecha_venta</code>. Cuando el movimiento es por venta, normalmente coinciden; pero una <span class="value">reposición</span> o una <span class="value">merma</span> puede ocurrir sin venta.</p>
+    <p><code>cantidad</code>: es la cantidad con signo que cambia el stock. Me sirve para sumar o restar unidades. No debo confundirla con <code>cantidad</code> de <code>detalle_ventas</code>. En <code>detalle_ventas</code>, si vendí 2 unidades, escribo 2. En <code>movimientos_stock</code>, si esas 2 unidades salen del stock, escribo −2.</p>
+    <p><code>id_detalle_venta FK</code>: es la clave foránea que conecta el movimiento con el renglón de venta que lo originó, cuando el movimiento deriva de una venta. Me sirve para rastrear qué venta produjo esa salida de stock. No debo confundirlo con <code>id_venta FK</code>: el stock no sale por la venta general, sino por cada producto vendido en un renglón concreto.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tabla de ejemplo en <code>movimientos_stock</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_movimiento_stock</code></th>
+            <th><code>id_producto_comercializable FK</code></th>
+            <th><code>id_tipo_movimiento_stock FK</code></th>
+            <th><code>fecha_movimiento</code></th>
+            <th><code>cantidad</code></th>
+            <th><code>id_detalle_venta FK</code></th>
+            <th>Lectura concreta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2024-05-12</td>
+            <td>−2</td>
+            <td>1</td>
+            <td>Salen 2 <span class="value">Sticker</span> de <span class="value">Britney</span> por una <span class="value">venta</span></td>
+          </tr>
+          <tr>
+            <td>102</td>
+            <td>2</td>
+            <td>3</td>
+            <td>2024-05-12</td>
+            <td>−1</td>
+            <td>2</td>
+            <td>Sale 1 <span class="value">Postal</span> de <span class="value">Chihiro</span> por una <span class="value">venta</span></td>
+          </tr>
+          <tr>
+            <td>103</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2024-05-12</td>
+            <td>−1</td>
+            <td>3</td>
+            <td>Sale 1 <span class="value">Pin</span> de <span class="value">Venus</span> por una <span class="value">venta</span></td>
+          </tr>
+          <tr>
+            <td>104</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2024-05-12</td>
+            <td>5</td>
+            <td></td>
+            <td>Entran 5 <span class="value">Taza</span> de <span class="value">Sailor Moon</span> por <span class="value">reposición</span></td>
+          </tr>
+          <tr>
+            <td>105</td>
+            <td>5</td>
+            <td>4</td>
+            <td>2024-05-12</td>
+            <td>−1</td>
+            <td></td>
+            <td>Sale 1 <span class="value">Cuadro</span> de <span class="value">Titanic</span> por <span class="value">merma</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>No todo movimiento de stock tiene que tener venta. Si obligara a que todos los movimientos de stock tengan <code>id_detalle_venta FK</code>, no podría registrar <span class="value">reposiciones</span>, <span class="value">mermas</span> ni <span class="value">ajustes</span>. Por eso <code>id_detalle_venta FK</code> es opcional en <code>movimientos_stock</code>.</p>
+    </div>
+
+    <h2>15.&nbsp;La relación más delicada: <code>detalle_ventas</code> — <code>debería generar</code> → <code>movimientos_stock</code></h2>
+    <p>Esta relación tiene un nombre muy elegido: <code>debería generar</code>.</p>
+    <p>No dice “genera automáticamente”. Dice <code>debería generar</code>, porque en este sistema mínimo no hay un disparador automático que cree movimientos de stock cada vez que cargo un renglón de venta. Yo tengo que hacerlo manualmente.</p>
+    <p>Entonces leo:</p>
+    <p><code>detalle_ventas</code> — <code>debería generar</code> → <code>movimientos_stock</code></p>
+    <p>Esto significa: si cargo un renglón de venta, debería cargar también el movimiento de stock correspondiente.</p>
+    <p>Si vendí 2 <span class="value">Sticker</span> de <span class="value">Britney</span>, en <code>detalle_ventas</code> cargo cantidad 2. Después, en <code>movimientos_stock</code>, cargo cantidad −2 para ese mismo producto, con tipo <span class="value">venta</span>, y lo vinculo al <code>id_detalle_venta</code> correspondiente.</p>
+
+    <h3>Cardinalidad de <code>detalle_ventas</code> — <code>debería generar</code> → <code>movimientos_stock</code></h3>
+    <p>Un renglón de <code>detalle_ventas</code> puede generar cero o un movimiento de stock. Lo esperable es que genere uno, pero puede quedar en cero si me olvido o si todavía no cargué el movimiento. Esa posibilidad refleja la ausencia de automatización.</p>
+    <p>Un movimiento de stock puede estar asociado a cero o un detalle de venta. Si es una salida por <span class="value">venta</span>, debería estar asociado a un detalle. Pero si es una <span class="value">reposición</span>, una <span class="value">merma</span> o un <span class="value">ajuste</span>, no corresponde detalle de venta.</p>
+
+    <div class="block registro">
+      <div class="block-title"><span class="icon">🧾</span>Registro que hago</div>
+      <p>Después de cargar cada renglón de venta, reviso si tengo que cargar un movimiento de stock. Si el renglón vendió 1 unidad, cargo −1. Si vendió 2 unidades, cargo −2. Si vendió 3 unidades, cargo −3.</p>
+    </div>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Correspondencia entre <code>detalle_ventas</code> y <code>movimientos_stock</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Renglón en <code>detalle_ventas</code></th>
+            <th>Significado</th>
+            <th>Movimiento correspondiente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>id_detalle_venta</code> = 1, producto <span class="value">Sticker</span> de <span class="value">Britney</span>, <code>cantidad</code> = 2</td>
+            <td>Vendí 2 unidades</td>
+            <td>Movimiento tipo <span class="value">venta</span>, <code>cantidad</code> = −2, vinculado al detalle 1</td>
+          </tr>
+          <tr>
+            <td><code>id_detalle_venta</code> = 2, producto <span class="value">Postal</span> de <span class="value">Chihiro</span>, <code>cantidad</code> = 1</td>
+            <td>Vendí 1 unidad</td>
+            <td>Movimiento tipo <span class="value">venta</span>, <code>cantidad</code> = −1, vinculado al detalle 2</td>
+          </tr>
+          <tr>
+            <td><code>id_detalle_venta</code> = 3, producto <span class="value">Pin</span> de <span class="value">Venus</span>, <code>cantidad</code> = 1</td>
+            <td>Vendí 1 unidad</td>
+            <td>Movimiento tipo <span class="value">venta</span>, <code>cantidad</code> = −1, vinculado al detalle 3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block cuidado">
+      <div class="block-title"><span class="icon">⚠️</span>Cuidado al cargar</div>
+      <p>El signo cambia según la tabla. En <code>detalle_ventas</code>, la <code>cantidad</code> vendida se carga positiva: 2 unidades vendidas. En <code>movimientos_stock</code>, la salida del inventario se carga negativa: −2 unidades. Si cargo +2 en stock para una venta, estaría aumentando el stock cuando en realidad debería bajarlo.</p>
+    </div>
+
+    <h2>16.&nbsp;Cómo se ve una jornada completa en <span class="value">Nerdo</span></h2>
+    <p>Ahora puedo pensar la jornada completa.</p>
+    <p>Llego a <span class="value">Nerdo</span> con stock ya existente. No empiezo creando el stock desde cero. Ese stock viene de movimientos anteriores ya cargados. Lo que hago durante el día es registrar nuevas ventas, sus renglones y las salidas de stock que correspondan.</p>
+    <p>Primera venta: una persona compra 2 <span class="value">Sticker</span> de <span class="value">Britney</span>, 1 <span class="value">Postal</span> de <span class="value">Chihiro</span> y 1 <span class="value">Pin</span> de <span class="value">Venus</span>. Me paga por <span class="value">MercadoPago</span>.</p>
+    <p>Cargo una fila en <code>ventas</code>. Después cargo tres filas en <code>detalle_ventas</code>, una por cada producto. Después cargo tres movimientos de stock de tipo <span class="value">venta</span>, uno por cada renglón.</p>
+    <p>Segunda venta: otra persona compra 1 <span class="value">Sticker</span> de <span class="value">Frida</span>, 1 <span class="value">Sticker</span> de <span class="value">Titanic</span> y 1 <span class="value">Pin</span> de <span class="value">Venus</span>. Me paga en <span class="value">Efectivo</span>.</p>
+    <p>Cargo otra fila en <code>ventas</code>. Después cargo tres filas en <code>detalle_ventas</code>. Después cargo tres movimientos de stock.</p>
+    <p>Tercera venta: otra persona compra 1 <span class="value">Taza</span> de <span class="value">Sailor Moon</span> y 1 <span class="value">Cuadro</span> de <span class="value">Titanic</span>. Me paga por <span class="value">Transferencia</span>.</p>
+    <p>Cargo otra fila en <code>ventas</code>. Después cargo dos filas en <code>detalle_ventas</code>. Después cargo dos movimientos de stock.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Tres ventas pedagógicas de una jornada en <span class="value">Nerdo</span>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_venta</code></th>
+            <th><code>fecha_venta</code></th>
+            <th>Canal</th>
+            <th>Feria</th>
+            <th>Medio de pago</th>
+            <th>Descripción del mundo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>2024-05-12</td><td><span class="value">Feria</span></td><td><span class="value">Nerdo</span></td><td><span class="value">MercadoPago</span></td><td>Compran <span class="value">Sticker</span> de <span class="value">Britney</span>, <span class="value">Postal</span> de <span class="value">Chihiro</span> y <span class="value">Pin</span> de <span class="value">Venus</span></td>
+          </tr>
+          <tr>
+            <td>2</td><td>2024-05-12</td><td><span class="value">Feria</span></td><td><span class="value">Nerdo</span></td><td><span class="value">Efectivo</span></td><td>Compran <span class="value">Sticker</span> de <span class="value">Frida</span>, <span class="value">Sticker</span> de <span class="value">Titanic</span> y <span class="value">Pin</span> de <span class="value">Venus</span></td>
+          </tr>
+          <tr>
+            <td>3</td><td>2024-05-12</td><td><span class="value">Feria</span></td><td><span class="value">Nerdo</span></td><td><span class="value">Transferencia</span></td><td>Compran <span class="value">Taza</span> de <span class="value">Sailor Moon</span> y <span class="value">Cuadro</span> de <span class="value">Titanic</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Renglones correspondientes en <code>detalle_ventas</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_detalle_venta</code></th>
+            <th><code>id_venta FK</code></th>
+            <th>Producto vendido</th>
+            <th><code>cantidad</code></th>
+            <th><code>precio_unitario_historico</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>1</td><td><span class="value">Sticker</span> de <span class="value">Britney</span></td><td>2</td><td>800</td></tr>
+          <tr><td>2</td><td>1</td><td><span class="value">Postal</span> de <span class="value">Chihiro</span></td><td>1</td><td>1.800</td></tr>
+          <tr><td>3</td><td>1</td><td><span class="value">Pin</span> de <span class="value">Venus</span></td><td>1</td><td>5.000</td></tr>
+          <tr><td>4</td><td>2</td><td><span class="value">Sticker</span> de <span class="value">Frida</span></td><td>1</td><td>800</td></tr>
+          <tr><td>5</td><td>2</td><td><span class="value">Sticker</span> de <span class="value">Titanic</span></td><td>1</td><td>800</td></tr>
+          <tr><td>6</td><td>2</td><td><span class="value">Pin</span> de <span class="value">Venus</span></td><td>1</td><td>5.000</td></tr>
+          <tr><td>7</td><td>3</td><td><span class="value">Taza</span> de <span class="value">Sailor Moon</span></td><td>1</td><td>5.000</td></tr>
+          <tr><td>8</td><td>3</td><td><span class="value">Cuadro</span> de <span class="value">Titanic</span></td><td>1</td><td>10.000</td></tr>
+        </tbody>
+      </table>
+
+      <p>Salidas correspondientes en <code>movimientos_stock</code>:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_movimiento_stock</code></th>
+            <th>Producto</th>
+            <th>Tipo de movimiento</th>
+            <th><code>cantidad</code></th>
+            <th><code>id_detalle_venta FK</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>201</td><td><span class="value">Sticker</span> de <span class="value">Britney</span></td><td><span class="value">venta</span></td><td>−2</td><td>1</td></tr>
+          <tr><td>202</td><td><span class="value">Postal</span> de <span class="value">Chihiro</span></td><td><span class="value">venta</span></td><td>−1</td><td>2</td></tr>
+          <tr><td>203</td><td><span class="value">Pin</span> de <span class="value">Venus</span></td><td><span class="value">venta</span></td><td>−1</td><td>3</td></tr>
+          <tr><td>204</td><td><span class="value">Sticker</span> de <span class="value">Frida</span></td><td><span class="value">venta</span></td><td>−1</td><td>4</td></tr>
+          <tr><td>205</td><td><span class="value">Sticker</span> de <span class="value">Titanic</span></td><td><span class="value">venta</span></td><td>−1</td><td>5</td></tr>
+          <tr><td>206</td><td><span class="value">Pin</span> de <span class="value">Venus</span></td><td><span class="value">venta</span></td><td>−1</td><td>6</td></tr>
+          <tr><td>207</td><td><span class="value">Taza</span> de <span class="value">Sailor Moon</span></td><td><span class="value">venta</span></td><td>−1</td><td>7</td></tr>
+          <tr><td>208</td><td><span class="value">Cuadro</span> de <span class="value">Titanic</span></td><td><span class="value">venta</span></td><td>−1</td><td>8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>17.&nbsp;Al final del día: reposición, merma o ajuste no son ventas</h2>
+    <p>Al cierre de la jornada, puedo detectar otras cosas. Tal vez repongo 5 tazas que tenía guardadas en una caja. Tal vez encuentro un cuadro dañado. Tal vez corrijo una diferencia de conteo.</p>
+    <p>Eso no va en <code>ventas</code>, porque no cobré nada. Tampoco va en <code>detalle_ventas</code>, porque no hay renglón vendido. Va en <code>movimientos_stock</code>, con el tipo que corresponda.</p>
+    <p>Si agrego 5 <span class="value">Taza</span> de <span class="value">Sailor Moon</span> al stock disponible, cargo un movimiento de tipo <span class="value">reposición</span> con cantidad +5.</p>
+    <p>Si encuentro 1 <span class="value">Cuadro</span> de <span class="value">Titanic</span> dañado, cargo un movimiento de tipo <span class="value">merma</span> con cantidad −1.</p>
+    <p>Si al contar me doy cuenta de que hay una unidad más de lo esperado, cargo un <span class="value">ajuste</span> positivo. Si hay una unidad menos, cargo un <span class="value">ajuste</span> negativo.</p>
+
+    <div class="block ejemplo">
+      <div class="block-title"><span class="icon">🧮</span>Ejemplo de registros</div>
+      <p>Movimientos de stock no derivados de ventas:</p>
+      <table>
+        <thead>
+          <tr>
+            <th><code>id_movimiento_stock</code></th>
+            <th>Producto afectado</th>
+            <th>Tipo de movimiento</th>
+            <th><code>fecha_movimiento</code></th>
+            <th><code>cantidad</code></th>
+            <th><code>id_detalle_venta FK</code></th>
+            <th>Interpretación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>209</td><td><span class="value">Taza</span> de <span class="value">Sailor Moon</span></td><td><span class="value">reposición</span></td><td>2024-05-12</td><td>5</td><td></td><td>Agrego 5 tazas al stock</td></tr>
+          <tr><td>210</td><td><span class="value">Cuadro</span> de <span class="value">Titanic</span></td><td><span class="value">merma</span></td><td>2024-05-12</td><td>−1</td><td></td><td>Resto 1 cuadro dañado</td></tr>
+          <tr><td>211</td><td><span class="value">Sticker</span> de <span class="value">Britney</span></td><td><span class="value">ajuste</span></td><td>2024-05-12</td><td>1</td><td></td><td>Corrijo una diferencia positiva de conteo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>18.&nbsp;Qué me permite consultar todo esto después</h2>
+    <p>Después de cargar así, puedo hacer preguntas que antes, con un cuaderno desordenado, serían difíciles o inseguras.</p>
+    <ul>
+      <li>Puedo preguntar cuántas ventas hice en <span class="value">Nerdo</span> en una fecha determinada, mirando <code>ventas</code>.</li>
+      <li>Puedo preguntar qué productos vendí, mirando <code>detalle_ventas</code>.</li>
+      <li>Puedo preguntar si vendí más <span class="value">Sticker</span> o más <span class="value">Taza</span>, porque cada producto comercializable apunta a un artículo en <code>articulos</code>.</li>
+      <li>Puedo preguntar si vendí más diseños de <span class="value">Britney</span>, <span class="value">Chihiro</span> o <span class="value">Titanic</span>, porque cada producto comercializable apunta a un diseño en <code>disenos</code>.</li>
+      <li>Puedo calcular ingresos usando <code>cantidad</code> y <code>precio_unitario_historico</code> en <code>detalle_ventas</code>.</li>
+      <li>Puedo estimar ganancias usando <code>precio_unitario_historico</code>, <code>costo_unitario_historico</code> y <code>comision_porcentual_aplicada</code>.</li>
+      <li>Puedo saber stock actual sumando <code>cantidad</code> en <code>movimientos_stock</code> por cada producto comercializable.</li>
+      <li>Y puedo reconstruir qué pasó: qué fue <span class="value">venta</span>, qué fue <span class="value">reposición</span>, qué fue <span class="value">merma</span> y qué fue <span class="value">ajuste</span>, porque cada movimiento está clasificado por <code>tipos_movimiento_stock</code>.</li>
+    </ul>
+
+    <h2>19.&nbsp;Lectura final del recorrido completo</h2>
+    <p>Si tuviera que explicármelo a mí mismo mientras cargo la jornada, lo diría así:</p>
+    <p>Primero no anoto ventas directamente, porque antes necesito ordenar qué cosas existen en el negocio. Separo los soportes en <code>articulos</code>, como <span class="value">Sticker</span>, <span class="value">Taza</span>, <span class="value">Pin</span>, <span class="value">Postal</span> y <span class="value">Cuadro</span>. Separo los motivos gráficos en <code>disenos</code>, como <span class="value">Britney</span>, <span class="value">Sailor Moon</span>, <span class="value">Chihiro</span>, <span class="value">Frida</span>, <span class="value">Titanic</span> o <span class="value">Venus</span>. Después combino esas dos cosas en <code>productos_comercializables</code>, porque lo que vendo realmente no es un soporte suelto ni un diseño suelto, sino una combinación: <span class="value">Sticker</span> de <span class="value">Britney</span>, <span class="value">Postal</span> de <span class="value">Chihiro</span>, <span class="value">Taza</span> de <span class="value">Sailor Moon</span>.</p>
+    <p>Después preparo los datos que clasifican la venta. En <code>canales_venta</code> tengo el canal general, como <span class="value">Feria</span>. En <code>ferias</code> tengo la feria concreta, como <span class="value">Nerdo</span>. En <code>medios_pago</code> tengo cómo me pagaron, como <span class="value">Efectivo</span>, <span class="value">Transferencia</span> o <span class="value">MercadoPago</span>.</p>
+    <p>Cuando ocurre una operación comercial, cargo una fila en <code>ventas</code>. Esa fila dice cuándo fue, por qué canal, en qué feria, con qué medio de pago y con qué comisión aplicada. Pero esa fila no alcanza para saber qué productos salieron. Por eso la venta <code>se detalla en</code> <code>detalle_ventas</code>. Allí cargo un renglón por cada producto vendido, con su cantidad, precio histórico y costo histórico.</p>
+    <p>Después no me puedo olvidar del stock. Cada renglón vendido <code>debería generar</code> un movimiento en <code>movimientos_stock</code>, pero el sistema no lo hace solo. Si vendí 2 unidades, tengo que cargar una salida de −2. Si no lo hago, la venta queda registrada pero el stock queda mal.</p>
+    <p>Finalmente, si al cierre del día repongo, encuentro una merma o hago un ajuste, también lo cargo en <code>movimientos_stock</code>, aunque no haya venta. Eso es posible porque el stock no depende solo de las ventas: el stock <code>se obtiene de</code> todos los movimientos que afectan a cada <code>producto_comercializable</code>.</p>
+    <p>Esa es la lógica del DER: no es un dibujo abstracto. Es una forma ordenada de convertir lo que pasa en el puesto de <span class="value">Nerdo</span> en registros persistentes, consultables y menos ambiguos.</p>
+  </div>
+</body>
+</html>
